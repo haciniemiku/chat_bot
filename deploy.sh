@@ -31,7 +31,7 @@ if [ -d "$PROJECT_DIR/.git" ]; then
     cd $PROJECT_DIR
     git pull origin main
 else
-    git clone https://github.com/YOUR_USERNAME/llm-chatbot.git $PROJECT_DIR
+    git clone https://github.com/haciniemiku/chat_bot.git $PROJECT_DIR
     cd $PROJECT_DIR
 fi
 
@@ -39,16 +39,29 @@ fi
 echo "📦 安装 Python 依赖..."
 pip3 install -r requirements.txt
 
-# 创建环境变量文件
+# 创建环境变量模板文件
 echo "🔧 配置环境变量..."
 if [ ! -f "$PROJECT_DIR/.env" ]; then
-    cat > $PROJECT_DIR/.env << EOF
-API_KEY=your_api_key_here
+    if [ -f "$PROJECT_DIR/.env.example" ]; then
+        cp $PROJECT_DIR/.env.example $PROJECT_DIR/.env
+        echo "✅ 已从模板创建 .env 文件"
+    else
+        cat > $PROJECT_DIR/.env << EOF
+# DeepSeek API 配置
+# 请在此处填入您自己的 API 密钥
+API_KEY=your_deepseek_api_key_here
 BASE_URL=https://api.deepseek.com
 MODEL_NAME=deepseek-chat
+
+# 调试模式设置
 DEBUG_MODE=false
 EOF
-    echo "⚠️  请编辑 $PROJECT_DIR/.env 文件，填入您的 API 密钥"
+        echo "⚠️  已创建 .env 模板文件"
+    fi
+    echo "🔐 请编辑 $PROJECT_DIR/.env 文件，填入您自己的 API 密钥"
+    echo "💡 重要：不要使用他人的 API 密钥，每个用户应该使用自己的密钥"
+else
+    echo "ℹ️  .env 文件已存在，跳过创建"
 fi
 
 # 创建 systemd 服务文件

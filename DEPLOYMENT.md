@@ -61,18 +61,29 @@ chmod +x deploy.sh
 
 ### 第四步：配置环境变量
 
+**⚠️ 重要安全提醒：每个用户必须使用自己的 API 密钥！**
+
 编辑环境配置文件：
 ```bash
 nano /opt/llm-chatbot/.env
 ```
 
-填入以下内容：
+填入您自己的 API 密钥：
 ```env
-API_KEY=sk-your-deepseek-api-key-here
+# DeepSeek API 配置 - 请使用您自己的 API 密钥
+API_KEY=sk-your-actual-deepseek-api-key-here
 BASE_URL=https://api.deepseek.com
 MODEL_NAME=deepseek-chat
+
+# 调试模式设置
 DEBUG_MODE=false
 ```
+
+**安全注意事项：**
+- 不要使用他人的 API 密钥
+- API 密钥包含计费信息
+- 每个部署实例应该使用独立的密钥
+- 详细配置指南请参考 [API_KEY_SETUP.md](API_KEY_SETUP.md)
 
 ### 第五步：重启服务
 
