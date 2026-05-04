@@ -24,6 +24,13 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
+function createId() {
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  return Math.random().toString(36).slice(2) + Date.now().toString(36);
+}
+
 type Message = {
   id: string;
   role: "user" | "assistant";
@@ -61,14 +68,15 @@ export default function Home() {
     const content = messageText.trim();
     if (!content || isLoading) return;
 
+    
     const userMessage: Message = {
-      id: crypto.randomUUID(),
+      id: createId(),
       role: "user",
       content,
       timestamp: new Date(),
     };
-    const assistantMessageId = crypto.randomUUID();
 
+    const assistantMessageId = createId();
     setMessages((current) => [
       ...current,
       userMessage,

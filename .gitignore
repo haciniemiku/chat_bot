@@ -1,71 +1,54 @@
-# Python
+# Python / FastAPI
+backend/venv/
+venv/
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual environments
-venv/
-env/
-ENV/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 # Node / Next.js
+frontend/node_modules/
 node_modules/
+frontend/.next/
 .next/
+frontend/out/
 out/
-.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-coverage/
-*.tsbuildinfo
-next-env.d.ts
+frontend/dist/
+dist/
 
-# Environment variables
+# Env secrets
 .env
-.env.local
-.env.production
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
+.env.*
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.production.local
 
 # Logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+logs/
 
-# Streamlit
-.streamlit/secrets.toml
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
 
-# Temporary files
-*.tmp
-*.temp
+# Keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa
+id_rsa.pub
+
+# Local database
+*.sqlite
+*.sqlite3
+*.db
